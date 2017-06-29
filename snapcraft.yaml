@@ -30,6 +30,7 @@ parts:
     install: |
       cp psplash $SNAPCRAFT_PART_INSTALL/
     build-packages:
+      - libgdk-pixbuf2.0-dev
       - sed
       - automake
       - autoconf
