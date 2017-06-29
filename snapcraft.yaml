@@ -1,0 +1,36 @@
+name: psplash
+version: '0.1'
+summary: display a fullscreen splash screen on Ubuntu Core devices
+description: |
+  This is a build of the poky psplash tool, it is run as a service on system
+  startup and will display a fulllscreen Ubuntu Core logo on embedded devices
+architectures:
+  - armhf
+grade: stable
+confinement: devmode
+
+apps:
+  psplash:
+    command: psplash
+    daemon: simple
+
+parts:
+  psplash:
+    source: git://git.yoctoproject.org/psplash
+    plugin: make
+    prepare: |
+      aclocal
+      autoreconf --install
+      ./configure --host=arm-linux CC=/usr/bin/arm-linux-gnueabihf-gcc
+      cp ../../../core_black-orange_st_hex.png .
+      ./make-image-header.sh core_black-orange_st_hex.png POKY
+      sed -i 's/psplash-poky-img.h/core_black-orange_st_hex-img.h/' psplash.c
+    build: |
+      make
+    install: |
+      cp psplash $SNAPCRAFT_PART_INSTALL/
+    build-packages:
+      - sed
+      - automake
+      - autoconf
+      - gcc-arm-linux-gnueabihf
