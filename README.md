@@ -6,3 +6,6 @@ on Ubuntu core devices if wanted.
 To ship your own image replace core_black-orange_st_hex.png with your own png,
 adjust the make-image-header.sh call and the sed command in snapcraft.yaml and
 rebuild the snap using snapcraft.
+
+NOTE: this snap has to run in devmode, there is no snapd interface providing direct
+access to the framebuffer device yet.
