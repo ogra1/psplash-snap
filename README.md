@@ -8,4 +8,5 @@ adjust the make-image-header.sh call and the sed command in snapcraft.yaml and
 rebuild the snap using snapcraft.
 
 NOTE: this snap has to run in devmode, there is no snapd interface providing direct
-access to the framebuffer device yet.
+access to the framebuffer device with all additional bits (dup syscall and fully tty0
+ownership) yet.

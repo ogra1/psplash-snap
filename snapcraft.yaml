@@ -25,6 +25,7 @@ parts:
       cp ../../../core_black-orange_st_hex.png .
       ./make-image-header.sh core_black-orange_st_hex.png POKY
       sed -i 's/psplash-poky-img.h/core_black-orange_st_hex-img.h/' psplash.c
+      git apply ../../../psplash.patch
     build: |
       make
     install: |
