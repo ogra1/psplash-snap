@@ -22,9 +22,8 @@ parts:
       aclocal
       autoreconf --install
       ./configure --host=arm-linux CC=/usr/bin/arm-linux-gnueabihf-gcc
-      cp ../../../core_black-orange_st_hex.png .
-      ./make-image-header.sh core_black-orange_st_hex.png POKY
-      mv core_black-orange_st_hex-img.h psplash-poky-img.h
+      cp ../../../core_black-orange_st_hex.png psplash-poky.png
+      ./make-image-header.sh psplash-poky.png POKY
       git apply ../../../psplash-hide-progress.patch
     build: |
       make
