@@ -31,7 +31,7 @@ parts:
       make
     install: |
       cp psplash $SNAPCRAFT_PART_INSTALL/
-      cp psplash-writeCRAFT_PART_INSTALL/
+      cp psplash-write $SNAPCRAFT_PART_INSTALL/
     build-packages:
       - libgdk-pixbuf2.0-dev
       - sed
