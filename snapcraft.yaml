@@ -27,7 +27,15 @@ parts:
       fi
       aclocal
       autoreconf --install
-      ./configure --host=arm-linux CC=/usr/bin/arm-linux-gnueabihf-gcc
+      if [ "$(arch)" != "armv7l" ]; then \
+        if [ ! -e "/usr/bin/arm-linux-gnueabihf-gcc" ]; then \
+          echo "ERROR: install gcc-arm-linux-gnueabihf to cross build this snap!"; \
+          exit 1; \
+        fi
+        ./configure --host=arm-linux CC=/usr/bin/arm-linux-gnueabihf-gcc; \
+      else \
+        ./configure; \
+      fi
       git apply ../../../psplash.patch
       ../../../font-gen.sh "$FONT"
       ./make-image-header.sh "../../../${SPLASH}" CORE psplash-core
@@ -40,7 +48,6 @@ parts:
       - libgdk-pixbuf2.0-dev
       - automake
       - autoconf
-      - gcc-arm-linux-gnueabihf
       - otf2bdf
       - libbogl-dev
       - ttf-ubuntu-font-family
