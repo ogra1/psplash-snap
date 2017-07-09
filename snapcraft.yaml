@@ -21,13 +21,13 @@ parts:
     source: git://git.yoctoproject.org/psplash
     plugin: make
     prepare: |
+      . ../../../config
       aclocal
       autoreconf --install
       ./configure --host=arm-linux CC=/usr/bin/arm-linux-gnueabihf-gcc
-      cp ../../../core_black-orange_st_hex.png psplash-poky.png
-      ../../../font-gen.sh /usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-R.ttf
-      ./make-image-header.sh psplash-poky.png POKY
-      git apply ../../../psplash-hide-progress.patch
+      git apply ../../../psplash.patch
+      ../../../font-gen.sh "$FONT"
+      ./make-image-header.sh "../../../${SPLASH}" CORE psplash-core
     build: |
       make
     install: |
