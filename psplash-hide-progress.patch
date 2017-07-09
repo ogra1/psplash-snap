@@ -1,3 +1,16 @@
+diff --git a/Makefile.am b/Makefile.am
+index a14152a..1a329c0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,7 +5,7 @@ AM_CFLAGS = $(GCC_FLAGS) -D_GNU_SOURCE
+ psplash_SOURCES = psplash.c psplash.h psplash-fb.c psplash-fb.h \
+                   psplash-console.c psplash-console.h           \
+ 		  psplash-colors.h psplash-config.h		\
+-		  psplash-poky-img.h psplash-bar-img.h radeon-font.h
++		  psplash-poky-img.h psplash-bar-img.h font.h
+ 
+ psplash_write_SOURCES = psplash-write.c psplash.h
+ 
 diff --git a/psplash-bar-img.h b/psplash-bar-img.h
 index c1c7626..c672894 100644
 --- a/psplash-bar-img.h
@@ -13,3 +26,34 @@ index c1c7626..c672894 100644
  #define BAR_IMG_BYTES_PER_PIXEL (4) /* 3:RGB, 4:RGBA */
  #define BAR_IMG_RLE_PIXEL_DATA ((uint8*) \
    "\203\354\354\341\377\4\326\326\315\377\236\236\233\377\200\200\201\377" \
+diff --git a/psplash.c b/psplash.c
+index 992e199..8f07797 100644
+--- a/psplash.c
++++ b/psplash.c
+@@ -23,7 +23,7 @@
+ #include "psplash-colors.h"
+ #include "psplash-poky-img.h"
+ #include "psplash-bar-img.h"
+-#include "radeon-font.h"
++#include "font.h"
+ 
+ #define SPLIT_LINE_POS(fb)                                  \
+ 	(  (fb)->height                                     \
+@@ -45,7 +45,7 @@ psplash_draw_msg (PSplashFB *fb, const char *msg)
+ {
+   int w, h;
+ 
+-  psplash_fb_text_size (&w, &h, &radeon_font, msg);
++  psplash_fb_text_size (&w, &h, &font, msg);
+ 
+   DBG("displaying '%s' %ix%i\n", msg, w, h);
+ 
+@@ -62,7 +62,7 @@ psplash_draw_msg (PSplashFB *fb, const char *msg)
+ 			(fb->width-w)/2, 
+ 			SPLIT_LINE_POS(fb) - h,
+ 			PSPLASH_TEXT_COLOR,
+-			&radeon_font,
++			&font,
+ 			msg);
+ }
+ 

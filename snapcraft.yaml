@@ -25,6 +25,7 @@ parts:
       autoreconf --install
       ./configure --host=arm-linux CC=/usr/bin/arm-linux-gnueabihf-gcc
       cp ../../../core_black-orange_st_hex.png psplash-poky.png
+      ../../../font-gen.sh /usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-R.ttf
       ./make-image-header.sh psplash-poky.png POKY
       git apply ../../../psplash-hide-progress.patch
     build: |
@@ -37,3 +38,6 @@ parts:
       - automake
       - autoconf
       - gcc-arm-linux-gnueabihf
+      - otf2bdf
+      - libbogl-dev
+      - ttf-ubuntu-font-family
