@@ -48,6 +48,7 @@ parts:
       - libgdk-pixbuf2.0-dev
       - automake
       - autoconf
+      - gcc
       - otf2bdf
       - libbogl-dev
       - ttf-ubuntu-font-family
