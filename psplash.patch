@@ -1,5 +1,5 @@
 diff --git a/Makefile.am b/Makefile.am
-index a14152a..1a329c0 100644
+index a14152a..3c168c3 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -5,7 +5,7 @@ AM_CFLAGS = $(GCC_FLAGS) -D_GNU_SOURCE
@@ -7,7 +7,7 @@ index a14152a..1a329c0 100644
                    psplash-console.c psplash-console.h           \
  		  psplash-colors.h psplash-config.h		\
 -		  psplash-poky-img.h psplash-bar-img.h radeon-font.h
-+		  psplash-poky-img.h psplash-bar-img.h font.h
++		  psplash-core-img.h psplash-bar-img.h font.h
  
  psplash_write_SOURCES = psplash-write.c psplash.h
  
@@ -43,7 +43,7 @@ index c1c7626..c672894 100644
  #define BAR_IMG_RLE_PIXEL_DATA ((uint8*) \
    "\203\354\354\341\377\4\326\326\315\377\236\236\233\377\200\200\201\377" \
 diff --git a/psplash.c b/psplash.c
-index 992e199..ecb921d 100644
+index 992e199..f518278 100644
 --- a/psplash.c
 +++ b/psplash.c
 @@ -21,9 +21,9 @@
@@ -81,7 +81,7 @@ index 992e199..ecb921d 100644
    /* Draw the Poky logo  */
    psplash_fb_draw_image (fb, 
 -			 (fb->width  - POKY_IMG_WIDTH)/2, 
-+			 (fb->width  - CORE_IMG_WIDTH)/2, 
++			 (fb->width  - CORE_IMG_WIDTH)/2,
  #if PSPLASH_IMG_FULLSCREEN
 -			 (fb->height - POKY_IMG_HEIGHT)/2,
 +			 (fb->height - CORE_IMG_HEIGHT)/2,

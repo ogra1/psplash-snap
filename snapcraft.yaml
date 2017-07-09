@@ -25,6 +25,9 @@ parts:
       if ! $(echo "$FONT"|grep -q ^/); then \
          FONT="../../../${FONT}"; \
       fi
+      git apply ../../../psplash.patch
+      ../../../font-gen.sh "$FONT"
+      ./make-image-header.sh "../../../${SPLASH}" CORE psplash-core
       aclocal
       autoreconf --install
       if [ "$(arch)" != "armv7l" ]; then \
@@ -36,9 +39,6 @@ parts:
       else \
         ./configure; \
       fi
-      git apply ../../../psplash.patch
-      ../../../font-gen.sh "$FONT"
-      ./make-image-header.sh "../../../${SPLASH}" CORE psplash-core
     build: |
       make
     install: |
