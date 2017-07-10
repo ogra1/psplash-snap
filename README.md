@@ -1,13 +1,16 @@
-## Psplash daemon snap
+## PSplash daemon snap
 
-This snap contains the psplash binary run as a daemon to hide terminal consoles
+This snap contains the PSplash binary run as a daemon to hide terminal consoles
 on Ubuntu core devices if wanted.
 
-It ships with the psplash-write untility to send messages to the screen from
-scripts or the commandline.
+PSplash is a userspace graphical boot splash screen for mainly
+embedded Linux devices supporting a 16bpp or 32bpp framebuffer. It has
+few dependencies (just libc), supports basic images and text and handles
+rotation. Its visual look is configurable by basic source changes.
 
-There is also a service included that will print the login credentials on the 
-splash screen.
+The snap ships with the psplash-write untility to send messages to the screen from
+scripts or the commandline. There is also a service included that will print the ssh
+login credentials on the splash screen.
 
 **NOTE:** this snap has to run in devmode, there is no snapd interface providing direct
 access to the framebuffer device with all additional bits (full /dev/tty0
