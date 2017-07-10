@@ -53,9 +53,9 @@ from the apps: section in snapcraft.yaml
 
 ### Runtime configuration
 
-If you want to avoid any login consoles to take over your screen from psplash, add the option
+If you want to avoid any login consoles to take over your screen from psplash, add the options
 
-    vt.handoff=2
+    vt.handoff=2 quiet
 
 to your kernel cmdline.
 To quieten any u-boot messages on boot set the "stdout" variable to "serial" in the u-boot configuration.
