@@ -10,7 +10,7 @@ There is also a service included that will print the login credentials on the
 splash screen.
 
 **NOTE:** this snap has to run in devmode, there is no snapd interface providing direct
-access to the framebuffer device with all additional bits (full tty0
+access to the framebuffer device with all additional bits (full /dev/tty0
 ownership and sys_tty_config capability support) yet.
 
 ### Building
