@@ -18,11 +18,11 @@ ownership and sys_tty_config capability support) yet.
 
 ### Building
 
-To build this snap natively on an armhf machine just call 
+To build this snap natively on an armhf machine just call
 
     snapcraft
 
-If you are cross building on an amd64 system, make sure to first install the 
+If you are cross building on an amd64 system, make sure to first install the
 gcc-arm-linux-gnueabihf package and then call snapcraft.
 
     sudo apt install gcc-arm-linux-gnueabihf
@@ -35,7 +35,7 @@ The tree ships a ./config file containing two variables.
     SPLASH="core_black-orange_st_hex.png"
     FONT="/usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-R.ttf"
 
-To ship your own image place it in the toplevel of the tree and replace 
+To ship your own image place it in the toplevel of the tree and replace
 core_black-orange_st_hex.png in the config file with the name of your png.
 
 Likewise you can put your own truetype font into the toplevel tree and add its name
@@ -54,9 +54,9 @@ from the apps: section in snapcraft.yaml
 ### Runtime configuration
 
 If you want to avoid any login consoles to take over your screen from psplash, add the option
-    
+
     vt.handoff=2
- 
+
 to your kernel cmdline.
 To quieten any u-boot messages on boot set the "stdout" variable to "serial" in the u-boot configuration.
 
