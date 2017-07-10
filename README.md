@@ -40,6 +40,14 @@ to the config file (without full path) or, if the font is in an ubuntu package,
 you can add the package name to the "build-packages" stanza in snapcraft.yaml and
 define the full path to the ttf file in the config.
 
+To disable the showing of the ssh command for remote logins, just remove the "showlogin" block
+from the apps: section in snapcraft.yaml
+
+    showlogin:
+      command: showlogin.sh
+      daemon: simple
+      plugs: [network, network-bind]
+
 ### Runtime configuration
 
 If you want to avoid any login consoles to take over your screen from psplash, add the option
