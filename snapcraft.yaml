@@ -17,6 +17,10 @@ apps:
   psplash-write:
     command: psplash-write
     plugs: [network, network-bind]
+  showlogin:
+    command: showlogin.sh
+    daemon: simple
+    plugs: [network, network-bind]
 
 parts:
   psplash:
@@ -50,6 +54,7 @@ parts:
     install: |
       cp psplash $SNAPCRAFT_PART_INSTALL/
       cp psplash-write $SNAPCRAFT_PART_INSTALL/
+      cp ../../../showlogin.sh $SNAPCRAFT_PART_INSTALL/
     build-packages:
       - libgdk-pixbuf2.0-dev
       - automake
